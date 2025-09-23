@@ -1,0 +1,50 @@
+<section
+  class="bg-gray-200 border border-gray-300 rounded-lg p-4 my-16 mx-auto md:w-3/4 shadow-md"
+>
+  <h1 class="text-center text-3xl mb-3 font-light">Register Now</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <app-input
+      [control]="registerForm.get('name')"
+      [typeInput]="'text'"
+      [idInput]="'name'"
+      [labelInput]="'Name'"
+    ></app-input>
+
+    <app-input
+      [control]="registerForm.get('email')"
+      [typeInput]="'email'"
+      [idInput]="'email'"
+      [labelInput]="'Email'"
+    ></app-input>
+
+    <app-input
+      [control]="registerForm.get('password')"
+      
+      [idInput]="'password'"
+      [labelInput]="'Password'"
+    >Must contain at least one number and one uppercase and lowercase letter and one special characters, and at least 8 or more characters</app-input>
+
+    <app-input
+      [control]="registerForm.get('rePassword')"
+      
+      [idInput]="'rePassword'"
+      [labelInput]="'RePassword'"
+    ></app-input>
+
+    <app-input
+      [control]="registerForm.get('phone')"
+      [typeInput]="'tel'"
+      [idInput]="'phone'"
+      [labelInput]="'Phone'"
+    > Accept only Egypt's phone numbers</app-input>
+
+    <button class="btn mt-4" type="submit">
+      Register @if (isLoading) {
+      <span><i class="fas fa-spinner fa-spin"></i></span>
+      }
+    </button>
+    @if (errorMsg) {
+    <p class="text-center text-red-900 mt-4 p-4 bg-red-200">{{ errorMsg }}</p>
+    }
+  </form>
+</section>

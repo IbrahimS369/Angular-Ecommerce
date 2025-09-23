@@ -1,0 +1,23 @@
+<div class="card overflow-hidden border border-gray-200 shadow-lg p-2 relative rounded group/card">
+    <div [routerLink]="['/details', product.slug, product._id ]" class="cursor-pointer">
+        <img [src]="product.imageCover" class="w-full rounded-t" [alt]="product.title" />
+        <h3 class="text-sm text-main">{{ product.category.name }}</h3>
+        <h4 class="text-xl my-1.5 line-clamp-1">{{ product.title |term:2}}</h4>
+        <h3 class="text-lg my-1.5 line-clamp-1">{{ product.description }}</h3>
+        <div class="flex justify-between items-center">
+            <span>{{ product.price|currency:'GBP'}} EGP</span>
+            <span><i class="fas fa-star text-yellow-600"></i>
+                {{ product.ratingsAverage }}</span>
+        </div>
+    </div>
+    <div class="flex justify-between items-center">
+        <button (click)="addProductItemToCart(product._id)"
+            class="btn translate-y-[125%] group-hover/card:translate-y-0">
+            Add To Cart
+        </button>
+        <span [class]="{'text-red-700' : liked,
+            'text-gray-600' : !liked,
+        }" (click)="addProductItemToWishlist(product._id)"><i class="fa-solid fa-heart fa-2x  cursor-pointer"></i></span>
+    </div>
+
+</div>

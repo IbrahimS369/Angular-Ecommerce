@@ -1,0 +1,9 @@
+/
+/home
+/products
+/cart
+/brands
+/categories
+/wishlist
+/login
+/register

@@ -1,0 +1,13 @@
+  <main class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-semibold mb-6">All Brands</h2>
+    <section aria-label="Brand Gallery" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-12">
+
+        @for (brand of brandsList; track brand._id) {
+            <article class=" bg-white/15 rounded-xl shadow-md  p-6 flex flex-wrap items-center justify-center  hover:shadow-xl transition-shadow">
+              <img [src]="brand.image" [alt]="brand.name" class="w-full  ">
+              <h2 class="text-sm font-semibold text-main">{{brand.name}}</h2>
+            </article>
+        }
+
+    </section>
+  </main>

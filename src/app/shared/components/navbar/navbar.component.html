@@ -1,0 +1,78 @@
+<nav class="bg-gray-100 border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-2xl gap-2 flex flex-wrap items-center justify-between mx-auto py-3 px-4">
+    <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="/images/freshcart-logo.svg" alt="" />
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      aria-controls="navbar-default" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15" />
+      </svg>
+    </button>
+    <div class="grow hidden w-full md:flex items-center md:w-auto" id="navbar-default">
+      @if (isLogin === true) {
+      <ul
+        class="font-medium ms-4 flex flex-col mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a routerLinkActive="text-main" routerLink="/home"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-main dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{
+            "navbar.home" | translate }}</a>
+        </li>
+        <li>
+          <a routerLinkActive="text-main" routerLink="/products"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-main dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{
+            "navbar.products" | translate }}</a>
+        </li>
+        <li>
+          <a routerLinkActive="text-main" routerLink="/wishList"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-main dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{
+            "navbar.wishList" | translate }}</a>
+        </li>
+        <li>
+          <a routerLinkActive="text-main" routerLink="/categories"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-main dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{
+            "navbar.categories" | translate }}</a>
+        </li>
+        <li>
+          <a routerLinkActive="text-main" routerLink="/brands"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-main dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{
+            "navbar.brands" | translate }}</a>
+        </li>
+      </ul>
+      }
+
+      <ul
+        class="font-medium ms-auto flex flex-col mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li class="space-x-2 flex items-center">
+          <a href="#"><i class="fa fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa fa-brands fa-linkedin"></i></a>
+        </li>
+        @if (isLogin === false) {
+        <li>
+          <a routerLinkActive="text-main" routerLink="/login"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-main dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{'navbar.login'|translate}}</a>
+        </li>
+        <li>
+          <a routerLinkActive="text-main" routerLink="/register"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-main dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{'navbar.register'|translate}}</a>
+        </li>
+        } @else {
+        <li>
+          <a routerLinkActive="text-main" routerLink="/cart"
+            class="block relative text-3xl py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-main dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><i
+              class="fas fa-cart-shopping"></i>
+            <span
+              class="absolute inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">{{
+              count() }}</span></a>
+        </li>
+        <li><span class="cursor-pointer" (click)="signOut()">{{'navbar.signOut'|translate}}</span></li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

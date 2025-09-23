@@ -1,0 +1,49 @@
+<section class="max-w-screen-2xl my-5">
+    @if (cartDetails.totalCartPrice != 0) {
+    <div class=" p-4 shadow-md">
+        <h1 class="font-semibold text-4xl">Shop Cart</h1>
+        <span class="text-main text-2xl block my-4">Total Cart Price : {{ cartDetails.totalCartPrice }} EGP</span>
+        @for (item of cartDetails.products; track item.product.id) {
+        <div class="flex mb-4 shadow-lg p-2 space-x-1">
+            <div class="w-1/12">
+                <img [src]="item.product.imageCover" alt="" />
+            </div>
+            <div class="w-11/12 flex justify-between items-center">
+                <div class="space-y-1">
+                    <p>{{ item.product.title }}</p>
+                    <span class="text-main block">Price : {{ item.price * item.count }}</span>
+                    <button (click)="removeProduct(item.product.id)"
+                        class="flex items-center gap-2 cursor-pointer hover:text-red-600 active:scale-[.98]">
+                        <i class="fa fa-trash"></i> <span>Remove</span>
+                    </button>
+                </div>
+                <div class="space-x-1">
+                    <button (click)="updateProductCount(item.product.id, item.count + 1)"
+                        class="inline-flex justify-center items-center size-10 rounded border-2 border-main cursor-pointer">
+                        <i class="fa-solid fa-plus fa-xs"></i>
+                    </button>
+                    <span>{{ item.count }}</span>
+                    <button (click)="updateProductCount(item.product.id, item.count - 1)"
+                        class="inline-flex justify-center items-center size-10 rounded border-2 border-main cursor-pointer">
+                        <i class="fa-solid fa-minus fa-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+        <div class=" space-x-2 flex justify-around mt-10 ">
+            <button (click)="clearCart()"
+                class="bg-red-500 rounded text-white px-4 py-2 cursor-pointer active:scale-[.98]">
+                Clear Cart
+            </button>
+            <button [routerLink]="['/checkout', cartDetails._id]"
+                class="bg-main rounded text-white px-4 py-2 cursor-pointer active:scale-[.98]">
+                Proceed To CheckOut
+            </button>
+        </div>
+    </div>
+    }
+    @else {
+    <h2 class="text-main text-center m-10 text-3xl">Cart is empty ...</h2>
+    }
+</section>

@@ -1,0 +1,32 @@
+<section class="container p-12 my-2">
+    @if (wishDetails.count != 0) {
+    <div class=" p-4 ">
+        <h1 class="font-semibold text-4xl">Wish List</h1>
+
+        @for (product of wishDetailsList; track product._id) {
+        <div class="flex mb-4 shadow-lg border-gray-100 rounded-xl p-2 space-x-4">
+            <div class="w-1/12 rounded">
+                <img [src]="product.imageCover" class="w-full rounded-lg" [alt]="product.title" />
+            </div>
+            <div class="w-11/12 flex justify-between items-center">
+                <div class="space-y-4">
+                    <p class="font-semibold text-gray-600">{{ product.title }}</p>
+                    <span class="text-main block">Price : {{ product.price }}</span>
+                    <button (click)="removeProduct(product.id)"
+                        class="flex items-center gap-2 cursor-pointer font-semibold text-gray-600 hover:text-red-600 active:scale-[.98]">
+                        <i class="fa fa-trash"></i> <span>Remove</span>
+                    </button>
+                </div>
+                <div class="space-x-1">
+                    <button (click)="addProductItemToCart(product._id)" class="btn px-4 py-2 rounded-lg">
+                        Add To Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    } @else {
+    <h2 class="text-main text-center m-10 text-3xl">Wish List is empty ...</h2>
+    }
+</section>
